@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa con GPS y Buscador</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos/estilos.css">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+  <body>
+   
+<!-- Botón menú hamburguesa -->
+<button class="menu-btn" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</button>
+
+<!-- Menú desplegable -->
+<div id="menu" class="menu">
+  <a href="index.html">Inicio</a>
+  <a href="informacion.html">Información</a>
+  <a href="lugares.html">Lugares</a>
+  <a href="mundo.html">Mundo</a>
+  <a href="nosotros.html">Nosotros</a>
+</div>
+
+<!-- Script JS -->
+<script>
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+  }
+</script>
+  
+
+      <div class="collapse navbar-collapse" id="menuHamburguesa">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lugares.html">Lugares</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nosotros.html">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="informacion.html">Información</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mundo.html">Mundo</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    #searchBar {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div id="searchBar">
+    <input type="text" id="locationInput" placeholder="Buscar ubicación..." />
+    <button onclick="buscarUbicacion()">Buscar</button>
+    <button onclick="localizar()">Mi Ubicación</button>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    // Crear el mapa
+    const map = L.map('map').setView([0, 0], 2); // Coordenadas iniciales
+
+    // Cargar los tiles desde OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    let marker;
+
+    function buscarUbicacion() {
+      const lugar = document.getElementById('locationInput').value;
+      if (!lugar) return alert("Escribe una ubicación para buscar.");
+      
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(lugar)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            const lat = data[0].lat;
+            const lon = data[0].lon;
+            map.setView([lat, lon], 14);
+            if (marker) map.removeLayer(marker);
+            marker = L.marker([lat, lon]).addTo(map)
+              .bindPopup(lugar)
+              .openPopup();
+          } else {
+            alert("No se encontró la ubicación.");
+          }
+        });
+    }
+
+    function localizar() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          map.setView([lat, lon], 14);
+          if (marker) map.removeLayer(marker);
+          marker = L.marker([lat, lon]).addTo(map)
+            .bindPopup("Estás aquí")
+            .openPopup();
+        }, () => {
+          alert("No se pudo obtener tu ubicación.");
+        });
+      } else {
+        alert("Tu navegador no soporta geolocalización.");
+      }
+    }
+  </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
