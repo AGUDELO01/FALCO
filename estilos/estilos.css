@@ -164,5 +164,30 @@ hr {
 
 }
 
+.lugares{
+    max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 200px;
+}
 
+.lugares2{
+   max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 200px;
 
+}
+.lugares3{
+  max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 200px;
+}
+
+.lugares4{
+    max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 200px;
+}
