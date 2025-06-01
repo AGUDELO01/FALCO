@@ -1,19 +1,12 @@
 
-/* ==================
-   General
-================== */
 body {
-  font-family: Arial, sans-serif;
+ background-color: #2ecec0;
 }
 
-/* Encabezado */
 h1 {
   text-align: center;
 }
 
-/* ==================
-   Navbar
-================== */
 .navbar {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -33,9 +26,7 @@ h1 {
   padding: 0.25rem 0.75rem;
 }
 
-/* ==================
-   Carrusel
-================== */
+
 .carousel-container {
   max-width: 900px;
   margin: 0 auto;
@@ -48,18 +39,14 @@ h1 {
   border-radius: 50px;
 }
 
-/* Línea separadora */
+
 hr {
   border: 1px solid #f11f1f;
   max-width: 900px;
   margin: 2rem auto;
 }
 
-/* ==================
-   Menú Hamburguesa
-================== */
 
-/* Botón hamburguesa */
 .menu-btn {
   display: flex;
   flex-direction: column;
@@ -122,7 +109,7 @@ hr {
 }
  
 .logo1 {
-  width: 100px;
+  width: 200px;
  display: block;
   margin-left: auto;
   margin-right: auto;
@@ -168,6 +155,11 @@ hr {
 
 .folleto button:hover {
   background-color: #0056b3;
+
+
+}
+
+.contenido{
 
 
 }
