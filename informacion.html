@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="estilos/estilos.css">
 </head>
 <body>
+
+  
     <!-- Botón menú hamburguesa -->
 <button class="menu-btn" onclick="toggleMenu()">
   <div></div>
@@ -52,6 +54,20 @@
       </div>
         </div>
       </nav> 
+      
+
+       <form class="folleto">
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Mensaje:</label><br>
+    <textarea name="mensaje" rows="4" required></textarea><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
       
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>

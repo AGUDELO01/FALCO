@@ -130,13 +130,44 @@ hr {
 
 }
 
-close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  background: transparent;
+.folleto{
+ display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.folleto input,
+.folleto textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.folleto input:focus,
+.folleto textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.folleto button {
+  background-color: #007BFF;
   color: white;
+  padding: 12px 20px;
   border: none;
-  font-size: 30px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.folleto button:hover {
+  background-color: #0056b3;
+
+
 }
