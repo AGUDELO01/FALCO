@@ -164,19 +164,5 @@ hr {
 
 }
 
-.lugares{
-    max-height: 400px;
-  object-fit: cover;
-  width: 50%;
-  border-radius: 100px;
-}
 
-.lugares2{
-   max-height: 400px;
-  object-fit: cover;
-  width: 50%;
-  border-radius: 100px;
- float: right;
- background: center;
 
-}
